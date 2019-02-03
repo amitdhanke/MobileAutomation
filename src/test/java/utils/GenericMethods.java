@@ -1,17 +1,16 @@
 package utils;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+
 
 public class GenericMethods {
 	
-	public AndroidDriver driver = Hooks.driver;
-	public Hooks hook;
+	public WebDriver driver = Hooks.driver;
 	
 	
 	
@@ -22,6 +21,7 @@ public class GenericMethods {
 	
 	 public void clickOnElement(WebElement element)
 	{
+		explicitWait(element, 10); 
 		element.click();
 	}
 	 
@@ -31,10 +31,10 @@ public class GenericMethods {
 	  * @param value
 	  */
 	 
-	  public void setTextToInputFeild(AndroidElement element,String value)
+	  public void setTextToInputFeild(WebElement element,String value)
 	 {
 		 element.clear();
-		 element.setValue(value);
+		 element.sendKeys(value);
 	 }
 	 
 	 /**
@@ -43,7 +43,7 @@ public class GenericMethods {
 	  * @param waitInSecound
 	  */
 	 
-	 public void explicitWait(AndroidElement element,int waitInSecound)
+	 public void explicitWait(WebElement element,int waitInSecound)
 	{
 		 WebDriverWait wait = new WebDriverWait(driver, waitInSecound);	
 		 
@@ -56,9 +56,9 @@ public class GenericMethods {
 	  * @param text
 	  */
 	 
-	 public void scrollIntoElementByResourceIdText(AndroidElement ele,String text)
+	 public void scrollIntoElementByResourceIdText(WebElement ele,String text)
 	{
-		 AndroidElement element = (AndroidElement) driver.findElement(MobileBy.AndroidUIAutomator(
+		 WebElement element = (WebElement) driver.findElement(MobileBy.AndroidUIAutomator(
 					"new UiScrollable(new UiSelector().resourceId("+ele+")).scrollIntoView("
 					+ "new UiSelector().text("+text+"))"));
 		    

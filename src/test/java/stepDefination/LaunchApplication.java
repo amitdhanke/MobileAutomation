@@ -87,6 +87,6 @@ public class LaunchApplication {
 	    //dont use the close method to close native application because that will invalid method for native application it will through exception
 		driver.quit();
 	}
-*/	
+	*/
 
 }

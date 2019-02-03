@@ -1,58 +1,55 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import utils.GenericMethods;
 import utils.Hooks;
 
 public class LoginPage extends GenericMethods {
 
-	public AppiumDriver<AndroidElement> driver;
+	public WebDriver driver = null;
 
 	
 	public LoginPage() {
 		this.driver = Hooks.driver;
-		PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
+		PageFactory.initElements(this.driver, this);
 	}
 
-	@FindBy(id = "com.flipkart.android:id/mobileNo")
-	AndroidElement prepopulatedMobileNumber;
+	@AndroidFindBy(id = "com.flipkart.android:id/mobileNo")
+	public WebElement prepopulatedMobileNumber;
 	
-	@FindBy(id = "com.google.android.gms:id/cancel")
-	AndroidElement cancelBtnOnPrepopulatedMobileNumber;
+	@AndroidFindBy(id = "com.google.android.gms:id/cancel")
+	WebElement cancelBtnOnPrepopulatedMobileNumber;
 	
-	@FindBy(id = "android:id/text1")
-	AndroidElement mobileNumberInputFeild;
+	@AndroidFindBy(id = "android:id/text1")
+	WebElement mobileNumberInputFeild;
 	
-	@FindBy(id = "com.flipkart.android:id/mobileNo")
-	AndroidElement mobileNumberInput;
+	@AndroidFindBy(id = "com.flipkart.android:id/mobileNo")
+	WebElement mobileNumberInput;
 	
-	@FindBy(id = "com.flipkart.android:id/btn_mlogin")
-	AndroidElement logInBtn;
+	@AndroidFindBy(id = "com.flipkart.android:id/btn_mlogin")
+	WebElement logInBtn;
 	
-	@FindBy(id = "com.flipkart.android:id/et_password")
-	AndroidElement passInputFeild;
+	@AndroidFindBy(id = "com.flipkart.android:id/et_password")
+	WebElement passInputFeild;
     
-	@FindBy(id ="com.flipkart.android:id/search_widget_textbox")
-	AndroidElement searchInputFeild;
+	@AndroidFindBy(id ="com.flipkart.android:id/search_widget_textbox")
+	WebElement searchInputFeild;
 	
-	@FindBy(id ="com.flipkart.android:id/txt_subtitle")
-	AndroidElement searchSubTitle;
+	@AndroidFindBy(id ="com.flipkart.android:id/txt_subtitle")
+	WebElement searchSubTitle;
 	
-	@FindBy(id ="com.flipkart.android:id/allow_button")
-	AndroidElement allowPermissionBtn;
+	@AndroidFindBy(id ="com.flipkart.android:id/allow_button")
+	WebElement allowPermissionBtn;
 	
-	@FindBy(id ="com.android.packageinstaller:id/permission_allow_button")
-	AndroidElement permissionAllowBtn;
+	@AndroidFindBy(id ="com.android.packageinstaller:id/permission_allow_button")
+	WebElement permissionAllowBtn;
 	
-	@FindBy(id ="com.flipkart.android:id/action_bar_root")
-	AndroidElement scrollToElement;
+	@AndroidFindBy(id ="com.flipkart.android:id/action_bar_root")
+	WebElement scrollToElement;
 	
 	/**
 	 *Enter mobileNo/EmailID  
@@ -61,8 +58,8 @@ public class LoginPage extends GenericMethods {
 	
 	public void enterMobileNumber(String mobileNo) {
 		
+		
 		clickOnElement(prepopulatedMobileNumber);
-        
 		
 		// wait till handle pop None of above for login
 		explicitWait(cancelBtnOnPrepopulatedMobileNumber, 5);
@@ -75,9 +72,7 @@ public class LoginPage extends GenericMethods {
 		clickOnElement(mobileNumberInputFeild);
 		
 		setTextToInputFeild(mobileNumberInput, mobileNo);
-		
-		
-		
+			
 	}
 	
 	/**

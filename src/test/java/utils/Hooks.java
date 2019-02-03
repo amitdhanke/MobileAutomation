@@ -18,7 +18,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class Hooks {
 
-	public static AndroidDriver<AndroidElement> driver;
+	public static AndroidDriver<WebElement> driver;
 	
 	/**
 	 * initialize android driver here
@@ -39,7 +39,7 @@ public class Hooks {
 			caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\admin\\Desktop\\MobileAutomation\\Apk\\Flipkart_6.9.apk");
 			caps.setCapability(MobileCapabilityType.DEVICE_NAME, "e5aac03");
 			
-			AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(appiumURL,caps);
+			AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(appiumURL,caps);
 //		}
 	}
 	
